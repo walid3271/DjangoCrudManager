@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Comment</th>
+        </tr>
+        {% for da in data %} {% if da.id %}
+        <tr>
+          <td>{{ da.id }}</td>
+          <td>{{ da.name }}</td>
+          <td>{{ da.email }}</td>
+          <td>{{ da.password }}</td>
+          <td>{{ da.textbox }}</td>
+        </tr>
+        {% endif %} {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

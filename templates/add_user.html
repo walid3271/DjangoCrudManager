@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+  </head>
+  <body>
+    <form action = '' method = 'POST' novalidate> {% csrf_token %}
+        <table>
+          {{ add.as_p }}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

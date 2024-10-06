@@ -1,5 +1,4 @@
 from django import forms
-from .models import user_model
 
 class user_form(forms.Form):
     name = forms.CharField(label= 'Enter Your Name', label_suffix= '', required=True, error_messages={'required': 'Name is required.'})
@@ -10,19 +9,19 @@ class user_form(forms.Form):
     # file = forms.CharField(widget=forms.FileInput, label= 'Add your photo', label_suffix='', required=False)
     # checkbox = forms.CharField(widget=forms.CheckboxInput, label= 'Check', label_suffix='', required=True, error_messages={'required': 'Must check this box.'})
     
-def clean(self):
-    cleaned_data = super().clean()
-    password = cleaned_data.get('password')
-    password_confirmation = cleaned_data.get('repassword')
-    if password != password_confirmation:
-        raise forms.ValidationError('Passwords do not match')
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     password = cleaned_data.get('password')
+    #     password_confirmation = cleaned_data.get('repassword')
+    #     if password != password_confirmation:
+    #         raise forms.ValidationError('Passwords do not match')
 
-# def clean(self):
-#     cleaned_data = super().clean()
-#     password = cleaned_data.get('password')
-#     password_confirmation = cleaned_data.get('repassword')
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password_confirmation = cleaned_data.get('repassword')
 
-#     if password != password_confirmation:
-#         raise forms.ValidationError('Passwords do not match')
+        if password != password_confirmation:
+            raise forms.ValidationError('Passwords do not match')
 
-#     return cleaned_data  # Return cleaned data after validation
+        return cleaned_data
